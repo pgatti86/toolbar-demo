@@ -10,6 +10,8 @@ When using Jetpack Navigation however there is only one Activity and the NavHost
 In this scenario is useful to have a concise way to easily add or remove actions from the ToolBar 
 for each navigation route. This sample project aims to resolve this problem.
 
+https://user-images.githubusercontent.com/20385374/171950954-90b2c662-39ed-48ce-9e78-a9d261497d6d.mp4
+
 Define a toolbarController instance (Hoist instance as up as possible)
 
 ```kotlin
