@@ -18,8 +18,8 @@ Define a toolbarController instance (Hoist instance as up as possible)
 val toolbarController = rememberToolbarController()
 
 val screenToolbarActions by derivedStateOf {  
-	val route = currentBackStackEntry?.destination?.route ?: ""  
-	toolbarController.getToolbarActions(route = route)  
+    val route = currentBackStackEntry?.destination?.route ?: ""  
+    toolbarController.getToolbarActions(route = route)  
 }
 
 ...
@@ -33,7 +33,7 @@ Scaffold(
             )
         }
     }
-....
+...
 ```
 
 In composable Destination define toolbar items
@@ -45,8 +45,8 @@ fun FirstScreen(
 
     toolbarController.SetActions(  
         route = NavGraph.FIRST_SCREEN_ROUTE,  
-        actions = listOf(ToolbarAction.OpenSettings {  
-        Toast.makeText(context, "Settings Action", Toast.LENGTH_SHORT).show()  
+        actions = listOf(ToolbarAction.OpenSettings { 
+            Toast.makeText(context, "Settings Action", Toast.LENGTH_SHORT).show()  
         })  
     )
 }
