@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ToolbarDemo</string>
+
+    <!--  TOOLBAR ACTIONS  -->
+    <string name="toolbarActions_refresh_label">Refresh</string>
+    <string name="toolbarActions_settings_label">Settings</string>
+    <string name="toolbarActions_notifications_label">Notifications</string>
+
+    <string name="first_screen_title">FirstScreen</string>
+    <string name="navigate_to_first_screen_label">Navigate to FirstScreen</string>
+    <string name="second_screen_title">SecondScreen</string>
+    <string name="navigate_to_second_screen_label">Navigate to SecondScreen</string>
+    <string name="third_screen_title">ThirdScreen</string>
+    <string name="navigate_to_third_screen_label">Navigate to ThirdScreen</string>
+</resources>
