@@ -4,7 +4,7 @@ Before Jetpack Compose release we were used to add menu items in Fragments or Ac
 with **xml** files and **onCreateOptionsMenu** methods.
 
 The new UI tool is a game changer and via **Scaffold** composable it's easy to add global actions 
-to **TopAppBar**. With global actions I mean items that remains visible for the entire life cycle of the controller class. 
+to **TopAppBar**. With global actions I mean items that remains visible for the entire lifecycle of the controller class. 
 When using Jetpack Navigation however there is only one Activity and the NavHost swaps composable destinations on the screen.
 
 In this scenario is useful to have a concise way to easily add or remove actions from the ToolBar 
@@ -17,22 +17,25 @@ Define a toolbarController instance (Hoist instance as up as possible)
 ```kotlin
 val toolbarController = rememberToolbarController()
 
-val screenToolbarActions by derivedStateOf {  
-    val route = currentBackStackEntry?.destination?.route ?: ""  
-    toolbarController.getToolbarActions(route = route)  
+val screenToolbarActions by remember { 
+    derivedStateOf {
+        val route = currentBackStackEntry?.destination?.route ?: ""
+        toolbarController.getToolbarActions(route = route)
+    }
 }
 
 ...
-Scaffold( 
-    topBar = {  
-      TopAppBar {  
-          ToolbarContent(
-              ...
-              screenAdditionalToolbarActions = screenToolbarActions,  
-              navController = navController,
+Scaffold(
+    topBar = {
+        TopAppBar {
+            ToolbarContent(
+                ...
+                screenAdditionalToolbarActions = screenToolbarActions,
+                navController = navController
             )
         }
     }
+)
 ...
 ```
 
