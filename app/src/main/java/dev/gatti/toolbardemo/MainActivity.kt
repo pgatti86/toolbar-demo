@@ -12,6 +12,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
@@ -43,14 +44,18 @@ fun MainContent(navController: NavHostController = rememberNavController()) {
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
 
     val toolbarController = rememberToolbarController()
-    val screenToolbarActions by derivedStateOf {
-        val route = currentBackStackEntry?.destination?.route ?: ""
-        toolbarController.getToolbarActions(route = route)
+    val screenToolbarActions by remember {
+        derivedStateOf {
+            val route = currentBackStackEntry?.destination?.route ?: ""
+            toolbarController.getToolbarActions(route = route)
+        }
     }
 
-    val globalActions = listOf(ToolbarAction.Notifications {
-        Toast.makeText(context, "Notifications", Toast.LENGTH_SHORT).show()
-    })
+    val globalActions = remember {
+        listOf(ToolbarAction.Notifications {
+            Toast.makeText(context, "Notifications", Toast.LENGTH_SHORT).show()
+        })
+    }
 
     ToolbarDemoTheme {
         Scaffold(
