@@ -1,9 +1,6 @@
 package dev.gatti.toolbardemo.ui.composables.toolbar
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 
 class ToolbarControllerImpl(
     toolbarActions: Map<String, List<ToolbarAction>> = emptyMap()
@@ -20,6 +17,7 @@ class ToolbarControllerImpl(
     }
 
     override fun setToolbarActions(route: String, actions: List<ToolbarAction>) {
+        actionsMap.clear()
         actionsMap[route] = actions
     }
 }
@@ -29,11 +27,8 @@ fun rememberToolbarController(): ToolbarController = remember { ToolbarControlle
 
 @Composable
 fun ToolbarController.SetActions(route: String, actions: List<ToolbarAction>, key: Any = Unit) {
-    DisposableEffect(key) {
-        setToolbarActions(route = route, actions = actions)
 
-        onDispose {
-            setToolbarActions(route = route, emptyList())
-        }
+    LaunchedEffect(key1 = key) {
+        setToolbarActions(route = route, actions = actions)
     }
 }
